@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Floydzy's Shop{% endblock %}
+
+{% block body %}
+{% include 'nav.html.twig' %}
+<div class="container">
+    <div class="example-wrapper">
+        {% for article in articles %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h2>{{ article.name }}</h2>
+                <div>{{ article.price }}</div>
+                <div>{{ article.madein }}</div>
+                <div><img src="images/{{ article.photo }}" style="width:100px"></div>
+                <a href="add/{{article.id}}" class="btn btn-primary">Add to your cart</a>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+
+{% endblock %}

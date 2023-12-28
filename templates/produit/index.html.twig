@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+{% include 'nav.html.twig' %}
+<div class="company-info">
+    <div class="container">
+        <h1>All the products in the shop</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Production_date</th>
+                    <th>Made_in</th>
+                    <th>Photo</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.name }}</td>
+                    <td>{{ produit.price }}</td>
+                    <td>{{ produit.productionDate ? produit.productionDate|date('Y-m-d') : '' }}</td>
+                    <td>{{ produit.madeIn }}</td>
+                    <td><img src="{{ asset('images/' ~ produit.photo) }}" alt="Produit Image" style="width:100px"></td>
+                    <td> 
+                        <a href="{{ path('app_produit_show', {'id': produit.id}) }}" class="btn btn-primary btn-sm">Show</a>
+                        <a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_produit_new') }}" class="btn btn-success">Create new</a>
+    </div>
+    </div>
+{% endblock %}

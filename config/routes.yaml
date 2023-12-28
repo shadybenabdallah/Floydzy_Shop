@@ -1,0 +1,19 @@
+index:
+    path: /
+    controller: App\Controller\IndexController::index
+produit:
+    path: /produit
+    controller: App\Controller\ProduitController::index
+cart:
+    path: /cart
+    controller: App\Controller\CartController::index
+app_add:
+    path: /add/{id}
+    controller: App\Controller\CartController::add
+home:
+    path: /home
+    controller: App\Controller\HomeController::index
+add2:
+    path: /add2/{id}
+    controller: App\Controller\CartController::add2
+
